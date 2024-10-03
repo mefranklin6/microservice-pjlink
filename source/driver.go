@@ -619,9 +619,9 @@ func getVideoRouteDo(socketKey string) (string, error) {
 func PJLinkEstablishConnectionIfNeeded( socketKey string ) {
 	function := "PJLinkEstablishConnectionIfNeeded"
 
-	framework.ConnectionsMutex.Lock()
-	val, connectionEstablished := framework.ConnectionsTCP[socketKey]  // PJLink is always TCP
-	framework.ConnectionsMutex.Unlock()
+	framework.connectionsMutex.Lock()
+	val, connectionEstablished := framework.connectionsTCP[socketKey]  // PJLink is always TCP
+	framework.connectionsMutex.Unlock()
 
 	if( !connectionEstablished ) {
 		_ = val // appease
