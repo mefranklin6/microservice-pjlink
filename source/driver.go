@@ -137,9 +137,9 @@ func setVideoRouteDo(socketKey string, state string) (string, error) {
 	} else if( resp!="%1INPT=OK" ) {
 		errMsg := function+" - 3qr4gsrcv unrecognized response to input command: " + resp
 		framework.AddToErrors(socketKey, errMsg)
-		connectionsMutex.Lock()
+		framework.connectionsMutex.Lock()
 		framework.CloseSocketConnection(socketKey)  // close the socket so our retry starts from scratch
-		connectionsMutex.Unlock()	
+		framework.connectionsMutex.Unlock()	
 		return errMsg, errors.New(errMsg)
 	}
 
@@ -619,9 +619,9 @@ func getVideoRouteDo(socketKey string) (string, error) {
 func PJLinkEstablishConnectionIfNeeded( socketKey string ) {
 	function := "PJLinkEstablishConnectionIfNeeded"
 
-	connectionsMutex.Lock()
-	val, connectionEstablished := connectionsTCP[socketKey]  // PJLink is always TCP
-	connectionsMutex.Unlock()
+	framework.connectionsMutex.Lock()
+	val, connectionEstablished := framework.connectionsTCP[socketKey]  // PJLink is always TCP
+	framework.connectionsMutex.Unlock()
 
 	if( !connectionEstablished ) {
 		_ = val // appease
