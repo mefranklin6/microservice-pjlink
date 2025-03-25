@@ -618,6 +618,59 @@ func getVideoRouteDo(socketKey string) (string, error) {
 	return value, nil
 }
 
+func getLampHours(socketKey string) (string, error) {
+	//function := "getLampHours"
+
+	value := `"unknown"`
+	err := error(nil)
+	maxRetries := 2
+	for maxRetries > 0 {
+		value, err = getLampHoursDo(socketKey)
+		if value == `"unknown"` { // Something went wrong - perhaps try again
+			maxRetries--
+			time.Sleep(1 * time.Second)
+		} else { // Succeeded
+			maxRetries = 0
+		}
+	}
+	return value, err
+}
+
+func getLampHoursDo(socketKey string) (string, error) {
+	function := "getLampHoursDo"
+
+	PJLinkEstablishConnectionIfNeeded(socketKey)
+
+	baseStr := "%1LAMP ?"
+	commandStr := baseStr
+	sent := framework.WriteLineToSocket(socketKey, PJLinkizeCommand(socketKey, commandStr))
+
+	if sent != true {
+		errMsg := fmt.Sprintf(function + " - d8ruvq2a error sending command")
+		framework.AddToErrors(socketKey, errMsg)
+		return errMsg, errors.New(errMsg)
+	}
+
+	resp := framework.ReadLineFromSocket(socketKey)
+	framework.Log(function + "a2cv7z94 - resp: " + string(resp) + "\n")
+
+	value := `"unknown"`
+	if resp != "" {
+		respSplit := strings.Split(resp, "=")
+		if len(respSplit) != 2 {
+			framework.AddToErrors(socketKey, socketKey+" - 9tvtwy0i can't interpret response")
+			if respSplit[1] == "ERR3" {
+				framework.Log(fmt.Sprintf("%s - pbqtb3ug got unavailable time error", function))
+				return "unavailable", nil
+			}
+		} else {
+			value = `"` + respSplit[1] + `"`
+		}
+	}
+	// If we got here, the response was good, so successful return with the state indication
+	return value, nil
+}
+
 func PJLinkEstablishConnectionIfNeeded(socketKey string) {
 	function := "PJLinkEstablishConnectionIfNeeded"
 
