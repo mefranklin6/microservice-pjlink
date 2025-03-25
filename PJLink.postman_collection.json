@@ -126,6 +126,25 @@
 			"response": []
 		},
 		{
+			"name": "GET lamphours",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{microserviceURL}}/{{deviceFQDN}}/lamphours",
+					"protocol": "http",
+					"host": [
+						"{{microserviceURL}}"
+					],
+					"path": [
+						"{{deviceFQDN}}",
+						"lamphours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "SET Power",
 			"request": {
 				"method": "PUT",
