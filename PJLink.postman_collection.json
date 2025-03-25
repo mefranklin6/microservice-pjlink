@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "098414cb-88f1-4191-9293-dc31981565b7",
 		"name": "PJLink Microservice",
-		"description": "A collection of all possible GET and PUT calls for the Biamp microservice. You can replace the values in double curly brackets manually or create matching environment variables that will automatically fill in the values.",
+		"description": "A collection of all possible GET and PUT calls for the PJLink microservice. You can replace the values in double curly brackets manually or create matching environment variables that will automatically fill in the values.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26997154"
 	},
