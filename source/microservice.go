@@ -69,7 +69,7 @@ func doDeviceSpecificGet(socketKey string, setting string, arg1 string, arg2 str
 
 	switch setting {
 	case "power":
-		return getPower(socketKey) // arg1 is name in this case
+		return getPower(socketKey)
 	case "videoroute":
 		return getVideoRoute(socketKey, arg1) // arg1 is name in this case
 	case "inputs":
@@ -80,6 +80,8 @@ func doDeviceSpecificGet(socketKey string, setting string, arg1 string, arg2 str
 		return getAudioMute(socketKey, arg1) // arg1 is name in this case
 	case "audioandvideomute":
 		return getAudioAndVideoMute(socketKey, arg1) // arg1 is name in this case
+	case "lamphours":
+		return getLampHours(socketKey)
 	}
 
 	// If we get here, we didn't recognize the setting.  Send an error back to the config writer who had a bad URL.
