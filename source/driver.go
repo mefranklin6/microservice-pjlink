@@ -658,7 +658,7 @@ func getLampHoursDo(socketKey string) (string, error) {
 	if resp != "" {
 		respSplit := strings.Split(resp, "=")
 		if len(respSplit) != 2 {
-			framework.AddToErrors(socketKey, socketKey+" - 9tvtwy0i can't interpret response")
+			framework.AddToErrors(socketKey, fmt.Sprintf(socketKey+" - 9tvtwy0i can't interpret response: %s", resp))
 			if respSplit[1] == "ERR3" {
 				framework.Log(fmt.Sprintf("%s - pbqtb3ug got unavailable time error", function))
 				return "unavailable", nil
