@@ -30,8 +30,8 @@ Scripts include a `sleep` delay between requests:
 
 # Usage Instructions
 
-1. **Configure global variables**  
-   Before running a script, edit the values of the global variables at the top of the script. For example:
+1. **Configure constant variables**  
+   Before running a script, edit the values of the constant variables at the top of the script. For example:
    ```bash
    MICROSERVICE_URL="your.microservice.domain"
    DEVICE_FQDN="device.example.local"
