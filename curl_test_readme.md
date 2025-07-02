@@ -44,6 +44,8 @@ Scripts include a `sleep` delay between requests:
    chmod +x ./<script_name>.sh
    ```
 
+4. **Make sure the device FQDN is reachable over a network from the microservice host**
+
 3. **Run the script**  
    ```bash
    ./<script_name>.sh
