@@ -8,6 +8,8 @@ This microservice operates and controls projectors that adhere to the PJLink com
 
 [SONY VPL-FHZ85](https://pro.sony/ue_US/products/laser-projectors/vpl-fhz85)
 
+[Microservice testing documentation](https://github.com/Dartmouth-OpenAV/documentation/blob/main/curl_test_readme.md)
+
 ![](https://github.com/Dartmouth-OpenAV/microservice-pjlink/blob/main/diagram.png)
 
 ![](https://github.com/Dartmouth-OpenAV/microservice-pjlink/blob/main/front.png)
