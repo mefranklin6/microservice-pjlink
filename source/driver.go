@@ -731,3 +731,14 @@ func GetMD5Hash(text string) string {
 	hash := md5.Sum([]byte(text))
 	return hex.EncodeToString(hash[:])
 }
+
+func healthCheck(socketKey string) (string, error) {
+	resp, err := getLampHours(socketKey)
+	returnStr := "true"
+	if err != nil && strings.Contains(err.Error(), "error sending command") {
+		returnStr = "false"
+	} else {
+		returnStr = returnStr + " lamp hours: " + strings.Trim(resp, `"`)
+	}
+	return `"` + returnStr + `"`, nil
+}

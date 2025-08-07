@@ -82,6 +82,8 @@ func doDeviceSpecificGet(socketKey string, setting string, arg1 string, arg2 str
 		return getAudioAndVideoMute(socketKey, arg1) // arg1 is name in this case
 	case "lamphours":
 		return getLampHours(socketKey)
+	case "healthcheck":
+		return healthCheck(socketKey)
 	}
 
 	// If we get here, we didn't recognize the setting.  Send an error back to the config writer who had a bad URL.
