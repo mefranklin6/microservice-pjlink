@@ -736,6 +736,8 @@ func healthCheck(socketKey string) (string, error) {
 	resp, err := getLampHours(socketKey)
 	returnStr := "true"
 	if err != nil && strings.Contains(err.Error(), "error sending command") {
+		returnStr = "no connection"
+	} else if err != nil {
 		returnStr = "false"
 	} else {
 		returnStr = returnStr + " lamp hours: " + strings.Trim(resp, `"`)
